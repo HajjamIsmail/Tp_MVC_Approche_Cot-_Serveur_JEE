@@ -15,7 +15,8 @@ public class Tp4Application {
     public static void main(String[] args) {
         SpringApplication.run(Tp4Application.class, args);
     }
-    @Bean
+    //Bean ca veux dire execute mois cette méthode 'run'
+    //@Bean
     CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
             patientRepository.save(new Patient(null,"AAAA", new Date(), false, 12));

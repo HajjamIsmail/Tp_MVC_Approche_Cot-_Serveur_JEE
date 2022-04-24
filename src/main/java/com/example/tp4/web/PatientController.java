@@ -30,7 +30,7 @@ public class PatientController {
     }*/
 
     //Faire de la pagination en utilisant default nbr pages=0 and size=5(combient d'elt à afficher)
-    @GetMapping(path="/index")
+    @GetMapping(path="/user/index")
     public String patients(Model model,
                            @RequestParam(name="page",defaultValue = "0") int page,
                            @RequestParam(name="size",defaultValue = "5") int size,
@@ -43,42 +43,41 @@ public class PatientController {
         model.addAttribute("keyword",keyword);
         return "patients";
     }
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String delete(Long id, String keyword, int page){
         patientRepository.deleteById(id);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
 
     @GetMapping("/")
-    public String home(){
-        return "redirect:/index";
+    public String home() {
+        return "home";
     }
 
     //Utiliser Approche rendu coté client :
-
-    @GetMapping("/patients")
+    @GetMapping("/user/patients")
     @ResponseBody//dire qu'il vas serializer dans le corp de la rép
     //avoir la liste des patients en format json
     public List<Patient> patientList(){
         return patientRepository.findAll();
     }
 
-    @GetMapping("/formPatients")
+    @GetMapping("/admin/formPatients")
     public String formPatient(Model model){
         model.addAttribute("patient", new Patient());
         return "formPatients";
     }
 
-    @PostMapping(path="/save")
+    @PostMapping(path="/admin/save")
     public String save(Model model, @Valid Patient patient, BindingResult bindingResult,
                        @RequestParam(defaultValue = "0") int page,
                        @RequestParam(defaultValue = "") String keyword){
         if(bindingResult.hasErrors()) return "formPatients";
         patientRepository.save(patient);
-        return "redirect:/index?page="+page+"&$keyword="+keyword;
+        return "redirect:/user/index?page="+page+"&$keyword="+keyword;
     }
 
-    @GetMapping("/editPatients")
+    @GetMapping("/admin/editPatients")
     public String editPatient(Model model, Long id, String keyword, int page){
         Patient patient = patientRepository.findById(id).orElse(null);
         if(patient==null) throw new RuntimeException("Patient Introuvable");

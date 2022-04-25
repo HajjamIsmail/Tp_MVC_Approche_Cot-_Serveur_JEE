@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -17,9 +20,16 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    //Injection de passwordEncoder
+    /*@Autowired
+    private PasswordEncoder passwordEncoder;*/
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //using jdbc Authentication :
+        //=======>using jdbc Authentication :
         //aprés l'authentification il vas exécuter la requete pour savoir quel role
         /*PasswordEncoder passwordEncoder=passwordEncoder();
         auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select username as principal, password as credentials, active from users where username=?")
@@ -31,15 +41,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder);
 */
 
-        //using inMemoryAuthentication
+        //=======>using inMemoryAuthentication
         //user qui ont le droit d'acceder à l'app
         //noop => indiquer au spring qu'il y a pas password hasher
-        PasswordEncoder passwordEncoder=passwordEncoder();
+        /*PasswordEncoder passwordEncoder=passwordEncoder();
         String encodePWD=passwordEncoder.encode("1234");
         System.out.println(encodePWD);
         auth.inMemoryAuthentication().withUser("user1").password(encodePWD).roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("1111")).roles("USER","ADMIN");
-        auth.inMemoryAuthentication().withUser("user2").password(passwordEncoder.encode("0000")).roles("USER");
+        auth.inMemoryAuthentication().withUser("user2").password(passwordEncoder.encode("0000")).roles("USER");*/
+
+
+        //=======>using userDetailsService :
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
@@ -49,17 +63,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //permission de la page home => rendre public
         http.authorizeRequests().antMatchers("/").permitAll();
         //indiquer les paths (url) accessible au user => "admin"
-        http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/admin/**").hasAuthority("ADMIN");
         //indiquer les paths (url) accessible au user => "user1"
-        http.authorizeRequests().antMatchers("/user/**").hasRole("USER");
+        http.authorizeRequests().antMatchers("/user/**").hasAuthority("USER");
+        //autoriser les ressource static => bootstrap
+        http.authorizeRequests().antMatchers("/webjars/**").permitAll();
         //tous le reste ca nécissite une authentification
         http.authorizeRequests().anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/403");
-    }
-
-    //Utiliser Bcrypte comme type de cryptage
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
     }
 }

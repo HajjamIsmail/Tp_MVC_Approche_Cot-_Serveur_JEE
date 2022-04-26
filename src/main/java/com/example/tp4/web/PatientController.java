@@ -68,12 +68,32 @@ public class PatientController {
         return "formPatients";
     }
 
-    @PostMapping(path="/admin/save")
+    /*@PostMapping(path="/admin/save")
     public String save(Model model, @Valid Patient patient, BindingResult bindingResult,
                        @RequestParam(defaultValue = "0") int page,
                        @RequestParam(defaultValue = "") String keyword){
         if(bindingResult.hasErrors()) return "formPatients";
+        if(patient.getId()==0){
+            model.addAttribute("patient",patient);
+            patientRepository.save(patient);
+        }
+        else
+        {
+
+        }
+        return "redirect:/user/index?page="+page+"&$keyword="+keyword;
+    }*/
+
+    @PostMapping("/admin/save")
+    public String save(Model model,
+            @Valid Patient patient,
+            BindingResult bindingResult,
+            @RequestParam(defaultValue = "") String keyword,
+            @RequestParam(defaultValue = "0") int page) {
+        if(bindingResult.hasErrors()) return "formPatients";
+        System.out.println(patient.toString());
         patientRepository.save(patient);
+
         return "redirect:/user/index?page="+page+"&$keyword="+keyword;
     }
 

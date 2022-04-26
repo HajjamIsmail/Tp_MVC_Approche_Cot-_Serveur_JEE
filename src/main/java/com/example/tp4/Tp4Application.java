@@ -27,17 +27,17 @@ public class Tp4Application {
 
     //Bean ca veux dire execute mois cette méthode 'run'
     //@Bean
-    /*CommandLineRunner commandLineRunner(PatientRepository patientRepository){
+    CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
-            patientRepository.save(new Patient(null,"AAAA", new Date(), false, 12));
-            patientRepository.save(new Patient(null,"BBBB", new Date(), false, 10));
-            patientRepository.save(new Patient(null,"CCCC", new Date(), false, 15));
-            patientRepository.save(new Patient(null,"DDDD", new Date(), false, 17));
+            patientRepository.save(new Patient(null,"AAAA", new Date(), false));
+            patientRepository.save(new Patient(null,"BBBB", new Date(), true));
+            patientRepository.save(new Patient(null,"CCCC", new Date(), false));
+            patientRepository.save(new Patient(null,"DDDD", new Date(), true));
             patientRepository.findAll().forEach(p->{
                 System.out.println(p.getNom());
             });
         };
-    }*/
+    }
 
     //@Bean
     CommandLineRunner saveUsers(SecurityService securityService){

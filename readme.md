@@ -64,6 +64,7 @@ Après définitions des models. il faut vérifier dans le fichier xml les dépen
 >           <artifactId>spring-boot-starter-validation</artifactId>
 >       </dependency>
 <h3>application.properties :<h3/>
+
 Dans ce fichier en mets notre configuration :
 
 - Définir le port

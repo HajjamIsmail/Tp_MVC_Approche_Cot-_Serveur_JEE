@@ -35,7 +35,6 @@ public class PatientController {
                            @RequestParam(name="page",defaultValue = "0") int page,
                            @RequestParam(name="size",defaultValue = "5") int size,
                            @RequestParam(name="keyword",defaultValue = "") String keyword){
-        //Page<Patient> pagePatients = patientRepository.findAll(PageRequest.of(page,size));
         Page<Patient> pagePatients = patientRepository.findByNomContains(keyword, PageRequest.of(page,size));
         model.addAttribute("listPatients",pagePatients.getContent());
         model.addAttribute("pages", new int[pagePatients.getTotalPages()]);
@@ -67,22 +66,6 @@ public class PatientController {
         model.addAttribute("patient", new Patient());
         return "formPatients";
     }
-
-    /*@PostMapping(path="/admin/save")
-    public String save(Model model, @Valid Patient patient, BindingResult bindingResult,
-                       @RequestParam(defaultValue = "0") int page,
-                       @RequestParam(defaultValue = "") String keyword){
-        if(bindingResult.hasErrors()) return "formPatients";
-        if(patient.getId()==0){
-            model.addAttribute("patient",patient);
-            patientRepository.save(patient);
-        }
-        else
-        {
-
-        }
-        return "redirect:/user/index?page="+page+"&$keyword="+keyword;
-    }*/
 
     @PostMapping("/admin/save")
     public String save(Model model,

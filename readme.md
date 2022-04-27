@@ -77,9 +77,10 @@ on a définit ici notre entité JPA pour faire le traitement des données
 <h3>Package java/come.example.tp4.sec :</h3>
 Ce package on a définit notre sécurité de l'application (Gestion des roles) :   
 Dans la partie sécurité il existe 3 principes de sécurité :
-* inMemoryAuthentication
-* jdbc Authentication 
-* userDetailsService
+
+- inMemoryAuthentication
+- jdbc Authentication 
+- userDetailsService
 
 Dans notre tp j'ai travaillé sur les 3 mais la plus recommendé est **userDetailsService**
 

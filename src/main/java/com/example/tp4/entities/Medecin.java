@@ -14,6 +14,18 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Medecin {
+<<<<<<< HEAD
+=======
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idM;
+    @NotEmpty
+    @Size(min = 4, max = 40)
+    private String nom;
+    @OneToMany(mappedBy = "medecin", fetch=FetchType.LAZY)
+    private Collection<Consultation> consultations;*/
+
+>>>>>>> 9af0b7ce26a107a2df6273224f96ea5c07265b17
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty

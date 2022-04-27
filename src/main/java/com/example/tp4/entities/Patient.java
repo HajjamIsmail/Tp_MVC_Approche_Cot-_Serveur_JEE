@@ -16,7 +16,7 @@ import java.util.Date;
 @Data @NoArgsConstructor @ToString
 @AllArgsConstructor
 public class Patient {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /*@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
     private String nom;
@@ -24,6 +24,17 @@ public class Patient {
     @Temporal(TemporalType.DATE)
     private Date dateNaiss;
     private boolean malade;
+<<<<<<< HEAD
+=======
+    @OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
+    private Collection<Consultation> consultations;*/
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nom;
+    @Temporal(TemporalType.DATE)
+    private Date dateNaiss;
+    private boolean malade;
+>>>>>>> 9af0b7ce26a107a2df6273224f96ea5c07265b17
     @OneToMany(mappedBy = "patient",fetch = FetchType.LAZY)
     private Collection<RendezVous> rendezVous;
 

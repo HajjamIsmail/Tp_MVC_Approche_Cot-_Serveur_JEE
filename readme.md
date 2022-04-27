@@ -1,34 +1,48 @@
 <h1>Introduction</h1>
 Le But de ce Tp est de mettre en pratique L'architecture MVC en utilisant **Spring Web**, **Spring Security**, **JPA** et **thymeleaf** en utilisant biensur l'approche rendu coté serveur.
+
 <h1>Concept Générale :</h1>
+
 <h3>Architecture JEE :</h3>
 Il existe 2 type de composant :
 <h3>Servlet :</h3>
+
 >C'est une class java a pour but d'effectuer des traitement coté serveur (Controller).   
 >Il recoit la requet http et utilisent l'objet request qui permet de lire les requettes http.
+
 <h3>JSP :</h3>
->JSP = Java Server Pages (View).           
+
+>JSP = Java Server Pages (View).                     
 >Génére le code HTML, il recupère le résultat dans le model.
 
 Dans une application web il existe 2 approche :
 <h3>Approche rendu serveur :</h3>
+
 - le client recoit le HTML(JSP)
+
 <h3>Approche rendu client :</h3>
+
 - le client recoit le JSON
 - JSON vers HTML
 - pour faire cela il faut utiliser des framework comme angular, react, ...
 - dans cette approche on a pas besoin de model et de JSP(HTML)
+
 <h1>Pratique :</h1>
 Dans cette Activité pratiqué nous allons mettre en oeuvre tous ces notions :
+
 <h3>Architecture du projet :</h3>
-<img src="D:\EMSI\4em Année\S8\4-JEE\1-Classe\3-TP\Tp4\img\1.png"/>
+<img src="img/1.png"/>
+
 <h3>Model :</h3>
-<img src="D:\EMSI\4em Année\S8\4-JEE\1-Classe\3-TP\Tp4\img\DiagrameDeClasse.png"/>
+<img src="img/DiagrameDeClasse.png"/>
+
 <h3>Entities :</h3>
-<img src="D:\EMSI\4em Année\S8\4-JEE\1-Classe\3-TP\Tp4\img\2.png">
+<img src="img/2.png">
+
 <h3>POM.XML :</h3>
 Après définitions des models. il faut vérifier dans le fichier xml les dépendences suivantes :
 -Ajouter les dépendance du Bootstrap :
+
 >        <dependency>
 >            <groupId>org.webjars</groupId>
 >            <artifactId>bootstrap</artifactId>
@@ -36,12 +50,14 @@ Après définitions des models. il faut vérifier dans le fichier xml les dépen
 >        </dependency>
 
 - Ajouter les dépendances thymeleaf :
+
 >       <dependency>
 >           <groupId>nz.net.ultraq.thymeleaf</groupId>
 >           <artifactId>thymeleaf-layout-dialect</artifactId>
 >        </dependency>
 
 - Ajouter les dépendances des validations :
+
 >       <dependency>
 >           <groupId>org.springframework.boot</groupId>
 >           <artifactId>spring-boot-starter-validation</artifactId>
@@ -71,8 +87,8 @@ Dans notre tp j'ai travaillé sur les 3 mais la plus recommendé est **userDetai
 <h3>Package java/com.example.tp4.web :</h3>
 Dans ce package on a définit nos controller :
 
->**MedecinController** : pour le traitement de l'entité Medecin
->**PatientController** : pour le traitement de l'entité Patient
+>**MedecinController** : pour le traitement de l'entité Medecin                  
+>**PatientController** : pour le traitement de l'entité Patient                        
 >**SecurityController** : cette class à pour but de faire une redirection vers une page qui affiche '403' c-à-d en cas de fraudement d'autorisation !
 
 <h3>ressource/template :</h3>

@@ -15,22 +15,6 @@ import java.util.Date;
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Consultation {
-<<<<<<< HEAD
-=======
-    /*@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date_Cons;
-    @DecimalMin("70")
-    private float prix_Cons;
-    @ManyToOne
-    @JoinColumn(name = "id")
-    private Patient patient;
-    @ManyToOne
-    @JoinColumn(name = "idM")
-    private Medecin medecin;*/
->>>>>>> 9af0b7ce26a107a2df6273224f96ea5c07265b17
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Temporal(TemporalType.DATE)

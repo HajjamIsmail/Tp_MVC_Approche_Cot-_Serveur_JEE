@@ -1,5 +1,5 @@
 <h1>Introduction</h1>
-Le But de ce Tp est de mettre en pratique L'architecture MVC en utilisant **Spring Web**, **Spring Security**, **JPA** et **thymeleaf** en utilisant biensur l'approche rendu coté serveur.
+Le But de ce Tp est de mettre en pratique L'architecture MVC en utilisant <strong>Spring Web</strong>, <strong>Spring Security</strong> , <strong>JPA</strong> et <strong>thymeleaf</strong> en utilisant biensur l'approche rendu coté serveur.
 
 <h1>Concept Générale :</h1>
 
@@ -90,7 +90,7 @@ Dans ce package on a définit nos controller :
 
 >**MedecinController** : pour le traitement de l'entité Medecin                  
 >**PatientController** : pour le traitement de l'entité Patient                        
->**SecurityController** : cette class à pour but de faire une redirection vers une page qui affiche '403' c-à-d en cas de fraudement d'autorisation !
+>**SecurityController** : <p>cette class à pour but de faire une redirection vers une page qui affiche '403' c-à-d en cas de fraudement d'autorisation !</p>
 
 <h3>ressource/template :</h3>
 Cette partie est dédié pour les vues(Views).
@@ -98,7 +98,7 @@ Cette partie est dédié pour les vues(Views).
 <h1>Conclusion :</h1>
 Ce tp a pour but de mettre en pratiques 2 notions principaux :
 - Faire une application native (Approche coté serveur)
-- Faire la securité de l'application en pratiquant 3 principe : **inMemoryAuthentication**, **jdbc Authentication**, **userDetailsService**
+- Faire la securité de l'application en pratiquant 3 principe : <strong>inMemoryAuthentication</strong>, <strong>jdbc Authentication</strong>, <strong>userDetailsService</strong>
 
 
 

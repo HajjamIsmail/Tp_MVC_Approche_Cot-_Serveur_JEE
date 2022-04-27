@@ -41,7 +41,8 @@ Dans cette Activité pratiqué nous allons mettre en oeuvre tous ces notions :
 
 <h3>POM.XML :</h3>
 Après définitions des models. il faut vérifier dans le fichier xml les dépendences suivantes :
--Ajouter les dépendance du Bootstrap :
+
+- Ajouter les dépendance du Bootstrap :
 
 >        <dependency>
 >            <groupId>org.webjars</groupId>

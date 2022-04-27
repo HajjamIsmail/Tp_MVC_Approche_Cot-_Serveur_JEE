@@ -1,6 +1,8 @@
 package com.example.tp4;
 
+import com.example.tp4.entities.Medecin;
 import com.example.tp4.entities.Patient;
+import com.example.tp4.repositories.MedecinRepository;
 import com.example.tp4.repositories.PatientRepository;
 import com.example.tp4.sec.services.SecurityService;
 import org.springframework.boot.CommandLineRunner;
@@ -27,7 +29,7 @@ public class Tp4Application {
 
     //Bean ca veux dire execute mois cette méthode 'run'
     //@Bean
-    CommandLineRunner commandLineRunner(PatientRepository patientRepository){
+    /*CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
             patientRepository.save(new Patient(null,"AAAA", new Date(), false));
             patientRepository.save(new Patient(null,"BBBB", new Date(), true));
@@ -37,7 +39,8 @@ public class Tp4Application {
                 System.out.println(p.getNom());
             });
         };
-    }
+    }*/
+
 
     //@Bean
     CommandLineRunner saveUsers(SecurityService securityService){

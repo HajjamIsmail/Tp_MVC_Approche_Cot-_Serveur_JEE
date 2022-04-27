@@ -65,6 +65,7 @@ Après définitions des models. il faut vérifier dans le fichier xml les dépen
 >       </dependency>
 <h3>application.properties :<h3/>
 Dans ce fichier en mets notre configuration :
+
 - Définir le port
 - Définir le url de la base de données(h2-database/mysql)
 
